@@ -1,0 +1,19 @@
+.header {
+  width: 100%;
+  font-size: 2rem;
+  width: 100%;
+  height: 5rem;
+  color: #ae2a56;
+  background-color: rgb(255, 216, 213);
+  /* display: flex; */
+}
+
+.title {
+  float: left;
+  margin-top: 1rem;
+}
+
+.scores {
+  float: right;
+  margin-top: 1rem;
+}

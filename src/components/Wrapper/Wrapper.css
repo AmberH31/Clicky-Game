@@ -1,0 +1,7 @@
+.wrapper {
+  width: 100%;
+  background-color: rgb(255, 249, 215);
+  /* border: 1px solid firebrick; */
+  position: flex;
+  flex-direction: column;
+}

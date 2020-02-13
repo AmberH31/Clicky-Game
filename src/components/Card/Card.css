@@ -1,0 +1,16 @@
+.card {
+  width: 0 auto;
+  margin: 1rem auto;
+  width: 300px;
+  align-self: center;
+}
+
+/* .card > .img-container {
+  border: 1px solid darkblue;
+} */
+
+.card > .img-container > img {
+  width: 300px;
+  border-radius: 10px;
+  align-self: flex-start;
+}
