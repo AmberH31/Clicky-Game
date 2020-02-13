@@ -15,11 +15,30 @@ class App extends Component {
     highscore: 0
   };
 
-  //end game function
-  gameOVer = () => {};
+  //click and add score function
+  clickCount = id => {
+    this.state.cards.find((o, i) => {
+      if (o.id === id && cards[i].count === 0) {
+        cards[i].count = cards[i].count + 1;
+        this.setState({ score: this.state.score }, function() {
+          console.log(this.state.score);
+        });
+        this.state.cards.sort(() => Math.random() - 0.5);
+        return true;
+      } else {
+        return this.gameOver();
+      }
+    });
+  };
 
-  //click add score function
-  clickCount = id => {};
+  //end game function
+  gameOver = () => {
+    if (this.state.score > this.state.highscore) {
+      this.setState({ highscore: this.state.score }, function() {
+        console.log(this.state.highscore);
+      });
+    }
+  };
 
   render() {
     return (

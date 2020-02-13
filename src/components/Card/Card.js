@@ -7,7 +7,7 @@ const Card = props => {
   return (
     <div className="card" onClick={() => props.clickCount(this.props.id)}>
       <div className="img-container">
-        <img alt={props.id} src={props.src}></img>
+        <img alt={props.id} src={props.src} />
       </div>
     </div>
   );
