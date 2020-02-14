@@ -17,18 +17,45 @@ class App extends Component {
 
   //click and add score function
   clickCount = id => {
-    this.state.cards.find((o, i) => {
-      if (o.id === id && cards[i].count === 0) {
-        cards[i].count = cards[i].count + 1;
-        this.setState({ score: this.state.score }, function() {
-          console.log(this.state.score);
-        });
-        this.state.cards.sort(() => Math.random() - 0.5);
+    // this.state.cards.find((o, i) => {
+    //   if (o.id === id && cards[i].count === 0) {
+    //     cards[i].count = cards[i].count + 1;
+    //     this.setState({ score: this.state.score }, function() {
+    //       console.log(this.state.score);
+    //     });
+    //     this.state.cards.sort(() => Math.random() - 0.5);
+    //     return true;
+    //   } else {
+    //     return this.gameOver();
+    //   }
+    // });
+
+    let cardIndex;
+    const selectedCard = this.state.cards.find((card, index) => {
+      if (card.id === id) {
+        cardIndex = index;
         return true;
       } else {
-        return this.gameOver();
+        return false;
       }
     });
+    if (selectedCard && cardIndex) {
+      if (this.state.cards[cardIndex].count > 0) {
+        this.gameOver();
+      } else if (this.state.cards[cardIndex].count === 0) {
+        console.log("zero count");
+        //if you pass a callback func into setState, the only argument it gets is a copy of current state
+        this.setState(state => {
+          state.cards[cardIndex].count += 1;
+          state.score += 1;
+          state.highscore = Math.max(state.highscore, state.score);
+          //Array.sort is doing in-place sorting, which modifies the original array(not pure)
+          state.cards.sort(() => Math.random() - 0.5);
+          console.log(state);
+          return state;
+        });
+      }
+    }
   };
 
   //end game function
